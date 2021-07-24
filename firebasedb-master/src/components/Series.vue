@@ -1,9 +1,7 @@
 <template>
   <section>
     <div class="second-page">
-      <div class="second-container">
-        SERIES
-      </div>
+      
       <div class="card">
         <div class="image">
           <img src="../assets/card.png" alt="card" class="card-image" />
@@ -86,15 +84,7 @@ section {
       min-width: 440px;
     }
 
-    .second-container {
-      font-size: 14px;
-      color: #7e7e7e;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-bottom: 25px;
-      margin-left: 10px;
-    }
+   
     .card {
       padding-top: 30px;
       padding-bottom: 20px;
@@ -150,9 +140,9 @@ section {
         margin-right: 5%;
         .name {
           display: flex;
-          font-size: 11px;
+          font-size: 13px;
           font-weight: bolder;
-          margin-bottom: 0px;
+          margin-bottom: 3px;
 
           text-align: justify;
         }
@@ -160,21 +150,24 @@ section {
           .para {
             margin-top: 2px;
             margin-left: 0px;
-            font-size: 13px;
+            font-size: 100%;
             text-align: justify;
+            margin-bottom: 3%;
+            line-height: 120%;
           }
         }
         .course-info {
           display: flex;
           flex-direction: row;
           width: 400px;
+          margin-bottom: 4px;
           .info {
             display: flex;
             flex-direction: row;
             margin-left: 2px;
 
             .globe {
-              margin-right: 10px;
+              margin-right: 13px;
               height: 18px;
               width: 18px;
               object-fit: contain;
@@ -182,14 +175,14 @@ section {
             .subs {
               margin-top: 0%;
               margin-right: 15px;
-              font-size: 13px;
+              font-size: 15px;
             }
           }
         }
         .seats {
-          font-size: 12px;
+          font-size: 15px;
           .limit {
-            margin-top: 0%;
+            margin-top: 9%;
           }
         }
       }

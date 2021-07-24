@@ -1,14 +1,14 @@
 <template>
   <div class="home">
-    <Cr />
+    <Cr/>
   </div>
 </template>
 
 <script>
-import Cr from "../components/cr.vue";
-
+// @ is an alias to /src
+import Cr from "../components/cr.vue"
 export default {
   name: "Home",
-  components: { Cr },
+  components: {Cr},
 };
 </script>
