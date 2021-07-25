@@ -1,22 +1,23 @@
 <template>
   <section>
     <div class="second-page">
-      
       <div class="card">
         <div class="image">
-          <img src="../assets/card.png" alt="card" class="card-image" />
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/chatpoint1-16505.appspot.com/o/cardImage.jpeg?alt=media&token=564b5ffe-6b8b-4db5-aa56-7adba9150e30"
+            alt="card"
+            class="card-image"
+          />
         </div>
         <div class="information">
           <div class="name">
-            <h1 class="heading">
-              Movement Building: Mission-Driven Growth Hacking
+            <h1 class="heading" v-for="ToDo in ToDos" :key="ToDo.id">
+              {{ ToDo.courseName }}
             </h1>
           </div>
           <div class="about">
-            <p class="para">
-              Hey there future movement builder, it’s me, Tristan, your friendly
-              course creator. I created this class because I want to share my
-              learnings from a...
+            <p class="para" v-for="ToDo in ToDos" :key="ToDo.id">
+              {{ ToDo.courseDesc }}
             </p>
           </div>
           <div class="course-info">
@@ -48,7 +49,9 @@
                 width="20"
                 class="globe"
               />
-              <p class="subs">$295</p>
+              <p class="subs" v-for="ToDo in ToDos" :key="ToDo.id">
+                {{ ToDo.coursePrice }}
+              </p>
             </div>
           </div>
           <div class="seats">
@@ -61,7 +64,30 @@
 </template>
 
 <script>
-export default {};
+import { db } from "../firebase/db";
+export default {
+  data() {
+    return {
+      ToDos: [],
+      newItem: "",
+    };
+  },
+
+  methods: {
+    async addItem() {
+      if (this.newItem) {
+        await db.collection("ToDos").add({ courseName: this.newItem });
+        await db.collection("ToDos").add({ courseDesc: this.newItem });
+        await db.collection("ToDos").add({ coursePrice: this.newItem });
+
+        this.newItem = "";
+      }
+    },
+  },
+  firestore: {
+    ToDos: db.collection("ToDos"),
+  },
+};
 </script>
 <style lang="scss">
 section {
@@ -72,19 +98,20 @@ section {
   padding-top: 10px;
 
   .second-page {
-    margin-left: auto;
+    margin-left: 25%;
     margin-right: auto;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 800px;
+    max-width: 60%;
     @media (max-width: 468px) {
       display: block;
       min-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-   
     .card {
       padding-top: 30px;
       padding-bottom: 20px;

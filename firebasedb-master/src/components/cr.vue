@@ -3,6 +3,7 @@
     <section>
       <div class="big">
         <div class="first-page">
+          <!-- <router-link v-bind:to="'/' + ToDo.id">{{ ToDo.name }}</router-link> -->
           <div class="left-profile">
             <img
               height="100"
@@ -94,8 +95,6 @@
       SERIES
     </h2>
     <Series />
-    <Series />
-    <Series />
   </div>
 </template>
 <script>
@@ -110,9 +109,6 @@ export default {
   },
 
   methods: {
-    deleteToDo(id) {
-      db.collection("ToDos").doc(id);
-    },
     async addItem() {
       if (this.newItem) {
         await db.collection("ToDos").add({ name: this.newItem });
@@ -131,24 +127,7 @@ export default {
   firestore: {
     ToDos: db.collection("ToDos"),
   },
-  // mounted() {
-  //   const id = db.collection("ToDos").doc(id);
-  //   const imageFile = db.collection("ToDos");
 
-  //   imageFile
-  //     .get()
-  //     .then((doc) => {
-  //       if (doc.exists) {
-  //         console.log(doc.data());
-  //         this.image = doc.data().image;
-  //       } else {
-  //         console.log("no data");
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // },
   components: { Series },
 };
 </script>
@@ -405,7 +384,7 @@ export default {
   }
 }
 .second-container {
-  max-width: 30%;
+  max-width: 35%;
 
   font-size: 130%;
   color: #7e7e7e;
