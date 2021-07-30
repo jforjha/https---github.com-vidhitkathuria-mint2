@@ -52,30 +52,42 @@
               <div class="help">
                 <p class="help-line">How can I help?</p>
                 <div class="creator-features">
-                  <button class="button">
+                  <router-link
+                    style="text-decoration: none"
+                    class="button"
+                    :to="{ name: 'Schedule' }"
+                  >
                     <span
                       class="service"
                       v-for="ToDo in ToDos"
                       :key="ToDo.id"
                       >{{ ToDo.button1 }}</span
                     >
-                  </button>
-                  <button class="button">
+                  </router-link>
+                  <router-link
+                    style="text-decoration: none"
+                    class="button"
+                    :to="{ name: 'Schedule' }"
+                  >
                     <span
                       class="service"
                       v-for="ToDo in ToDos"
                       :key="ToDo.id"
                       >{{ ToDo.button2 }}</span
                     >
-                  </button>
-                  <button class="button">
+                  </router-link>
+                  <router-link
+                    style="text-decoration: none"
+                    class="button"
+                    :to="{ name: 'Schedule' }"
+                  >
                     <span
                       class="service"
                       v-for="ToDo in ToDos"
                       :key="ToDo.id"
                       >{{ ToDo.button3 }}</span
                     >
-                  </button>
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -184,7 +196,7 @@ export default {
         font-weight: 500;
         border-radius: 8px;
         border: 1px solid #0967d2 !important;
-        color: #0967d2;
+        color: white;
         font-size: 1rem;
         outline: none;
         cursor: pointer;
@@ -193,8 +205,8 @@ export default {
 
         transition: 0.5s ease-in-out;
         &:hover {
-          color: white;
-          background-color: #0967d2;
+          color: #0967d2;
+          background-color: white;
         }
         @media (max-width: 468px) {
           width: 70%;
@@ -335,6 +347,7 @@ export default {
             color: blanchedalmond;
             font-size: 120%;
             outline: none;
+
             cursor: pointer;
             margin-right: 29px;
             transition: 0.5s ease-in-out;
