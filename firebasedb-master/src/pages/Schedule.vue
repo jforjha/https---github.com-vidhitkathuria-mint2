@@ -1,41 +1,48 @@
 <template>
-  <div>
-    <form @submit.prevent="handleSubmit">
-      <h1>Provide Your Details</h1>
-      <label>First Name</label>
-      <input type="text" required v-model="firstname" />
-      <label>Last Name</label>
-      <input type="text" required v-model="lastname" />
+  <div class="total">
+    <div class="details">
+      <form @submit.prevent="handleSubmit">
+        <h1>Provide Your Details</h1>
+        <label>First Name</label>
+        <input id="name" type="text" required v-model="firstname" />
+        <label>Last Name</label>
+        <input type="text" required v-model="lastname" />
 
-      <label>Email</label>
-      <input type="email" required v-model="email" />
-      <label>Phone Number</label>
-      <input type="text" v-model="number" />
-      <div>
-        <input type="text" v-model="fromDateVal" placeholder="select date" />
-        <v-date-picker
-          locale="en-in"
-          :min="minDate"
-          :max="maxDate"
-          v-model="fromDateVal"
-          no-title
-          @input="fromDateMenu = false"
-        ></v-date-picker>
-      </div>
-      <div class="terms">
-        <input type="checkbox" required v-model="terms" />
-        <label>Accept terms and conditions</label>
-      </div>
-      <div class="submit">
-        <input
-          type="button"
-          style="background-color: lightgreen; height: 50px; width: 150px"
-          id="rzpbutton"
-          value="Payment Checkout"
-          v-on:click="event;"
-        />
-      </div>
-    </form>
+        <label>Email</label>
+        <input type="email" id="email" required v-model="email" />
+        <label>Phone Number</label>
+        <input type="text" id="number" v-model="number" />
+        <label for="date">select date</label>
+        <input type="text" v-model="fromDateVal" />
+
+        <div class="terms">
+          <input type="checkbox" required v-model="terms" class="box" />
+          <label class="accept">Accept terms and conditions</label>
+        </div>
+        <div class="submit">
+          <input
+            type="button"
+            style="background-color: lightblue; height: 50px; width: 150px"
+            class="pay"
+            id="rzpbutton"
+            value="Payment Checkout"
+            v-on:click="makepayment"
+          />
+        </div>
+      </form>
+    </div>
+    <div class="calender">
+      <label for="date">Choose Date</label>
+      <v-date-picker
+        class="date"
+        locale="en-in"
+        :min="minDate"
+        :max="maxDate"
+        v-model="fromDateVal"
+        no-title
+        @input="fromDateMenu = false"
+      ></v-date-picker>
+    </div>
   </div>
 </template>
 
@@ -47,14 +54,14 @@ export default {
     };
   },
   methods: {
-    event() {
+    makepayment: function() {
       var options = {
         key: "rzp_test_astk95KRrqNO0x",
         // key_secret : "mVybwVFhZAqr6Eg1OPGP3Rcs",
-        amount: this.cartValue * 100, // 2000 paise = INR 20
-        name: "Alconomy Technologies",
-        description: "Buy safe and secure crypto.",
-        image: "/your_logo.png",
+        amount: 500 * 100,
+        name: "GuruMint",
+        description: "Pay Your Educator",
+        image: "../assets/alconomy.png",
         handler: function(response) {
           alert(
             "Save This Payment ID For Future Referce  " +
@@ -63,8 +70,9 @@ export default {
           );
         },
         prefill: {
-          name: this.user.displayName,
-          email: this.user.email,
+          name: this.name,
+          email: this.email,
+          contact: this.number,
         },
         notes: {
           address: "Hello World",
@@ -73,7 +81,7 @@ export default {
           color: "#0EB9F2",
         },
       };
-      var rzp1 = new options();
+      const rzp1 = new window.Razorpay(options);
 
       rzp1.open();
       // event.preventDefault();
@@ -101,6 +109,26 @@ export default {
 </script>
 
 <style>
+.total {
+  display: flex;
+  flex-direction: row;
+}
+
+.details {
+  flex: 2;
+  /* border: solid black 1px; */
+  max-width: 60%;
+}
+.calender {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-height: 100%;
+  margin-left: 0%;
+  align-items: flex-start;
+  margin-top: auto;
+  margin-bottom: auto;
+}
 form {
   max-width: 420px;
   margin: 30px auto;
@@ -163,5 +191,31 @@ button {
   margin-top: 10px;
   font-size: 0.8em;
   font-weight: bold;
+}
+.pay {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+}
+.terms {
+  margin-top: 10%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  vertical-align: auto;
+}
+.accept {
+  margin-top: 0%;
+}
+@media (max-width: 468px) {
+  .total {
+    display: flex;
+    flex-direction: column;
+  }
+  .details {
+    max-width: 100%;
+  }
 }
 </style>

@@ -335,6 +335,9 @@ export default {
             align-items: center;
           }
           .button {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             margin-top: 1.5rem;
             height: 40px;
             width: 270px;
@@ -361,6 +364,7 @@ export default {
               //   align-items: center;
               margin-left: auto;
               margin-right: auto;
+              line-height: 130%;
               height: 50px;
               width: 290px;
               font-size: 120%;
