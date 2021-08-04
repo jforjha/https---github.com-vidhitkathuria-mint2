@@ -1,59 +1,85 @@
 <template>
-  <div class="total">
-    <div class="details">
-      <form @submit.prevent="handleSubmit">
-        <h1>Provide Your Details</h1>
-        <label>First Name</label>
-        <input id="name" type="text" required v-model="firstname" />
-        <label>Last Name</label>
-        <input type="text" required v-model="lastname" />
+  <div>
+    <form v-if="!submitted">
+      <h1>Provide Your Details</h1>
+      <label>First Name</label>
+      <input id="firstname" type="text" required v-model="user.firstname" />
+      <label>Last Name</label>
+      <input type="text" required v-model="user.lastname" id="lastname" />
 
-        <label>Email</label>
-        <input type="email" id="email" required v-model="email" />
-        <label>Phone Number</label>
-        <input type="text" id="number" v-model="number" />
-        <label for="date">select date</label>
-        <input type="text" v-model="fromDateVal" />
+      <label>Email</label>
+      <input type="email" id="email" required v-model="user.email" />
+      <label>Phone Number</label>
+      <input type="text" id="number" v-model="user.number" />
 
-        <div class="terms">
-          <input type="checkbox" required v-model="terms" class="box" />
-          <label class="accept">Accept terms and conditions</label>
-        </div>
-        <div class="submit">
-          <input
-            type="button"
-            style="background-color: lightblue; height: 50px; width: 150px"
-            class="pay"
-            id="rzpbutton"
-            value="Payment Checkout"
-            v-on:click="makepayment"
-          />
-        </div>
-      </form>
-    </div>
-    <div class="calender">
-      <label for="date">Choose Date</label>
-      <v-date-picker
-        class="date"
-        locale="en-in"
-        :min="minDate"
-        :max="maxDate"
-        v-model="fromDateVal"
-        no-title
-        @input="fromDateMenu = false"
-      ></v-date-picker>
-    </div>
+      <label for="party">Enter a date and time to reserved your slot :)</label>
+      <input
+        type="datetime-local"
+        id="fromDateVal"
+        v-model="user.fromDateVal"
+        :first-interval="9"
+        :interval-minutes="60"
+        :interval-count="8"
+        min="2021-08-01T00:00"
+        max="2021-08-31T00:00"
+        placeholder="Select Date"
+      />
+      <!-- <v-date-picker v-model="fromDateVal"></v-date-picker> -->
+      <br />
+
+      <!-- <input type="time" v-model="time"  placeholder="Select Time"  min="08:00" max="20:00" required> -->
+      <!--          
+              <v-time-picker v-model="time" format="24hr"></v-time-picker> -->
+      <!-- <div class="terms">
+        <input type="checkbox" required v-model="terms" />
+        <label>Accept terms and conditions</label>
+      </div> -->
+
+      <input
+        type="button"
+        style="background-color: lightgreen; height: 50px; width: 150px"
+        id="rzpbutton"
+        value="Payment Checkout"
+        v-on:click="
+          makepayment();
+          post();
+        "
+      />
+    </form>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
-      fromDateVal: null,
+      user: {
+        fromDateVal: "",
+
+        firstname: "",
+        lastname: "",
+        email: "",
+        number: "",
+      },
+      submitted: false,
     };
   },
+
   methods: {
+    post() {
+      axios
+        .post(
+          "https://chatpoint1-16505-default-rtdb.firebaseio.com/posts.json",
+          this.user,
+          { emulateJSON: true }
+        )
+        .then(function(data) {
+          console.log(data);
+          this.submitted = true;
+        });
+    },
+
     makepayment: function() {
       var options = {
         key: "rzp_test_astk95KRrqNO0x",
@@ -61,7 +87,7 @@ export default {
         amount: 500 * 100,
         name: "GuruMint",
         description: "Pay Your Educator",
-        image: "../assets/alconomy.png",
+        image: "/your_logo.png",
         handler: function(response) {
           alert(
             "Save This Payment ID For Future Referce  " +
@@ -70,9 +96,9 @@ export default {
           );
         },
         prefill: {
-          name: this.name,
-          email: this.email,
-          contact: this.number,
+          name: this.user.name,
+          email: this.user.email,
+          contact: this.user.number,
         },
         notes: {
           address: "Hello World",
@@ -109,26 +135,6 @@ export default {
 </script>
 
 <style>
-.total {
-  display: flex;
-  flex-direction: row;
-}
-
-.details {
-  flex: 2;
-  /* border: solid black 1px; */
-  max-width: 60%;
-}
-.calender {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  max-height: 100%;
-  margin-left: 0%;
-  align-items: flex-start;
-  margin-top: auto;
-  margin-bottom: auto;
-}
 form {
   max-width: 420px;
   margin: 30px auto;
@@ -175,14 +181,14 @@ input[type="checkbox"] {
   color: #777;
   cursor: pointer;
 }
-button {
+/* button {
   background: #0b6dff;
   border: 0;
   padding: 10px 20px;
   margin-top: 20px;
   color: white;
   border-radius: 20px;
-}
+} */
 .submit {
   text-align: center;
 }
@@ -191,31 +197,5 @@ button {
   margin-top: 10px;
   font-size: 0.8em;
   font-weight: bold;
-}
-.pay {
-  display: flex;
-  flex-direction: row;
-  margin-left: auto;
-  margin-right: auto;
-}
-.terms {
-  margin-top: 10%;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  vertical-align: auto;
-}
-.accept {
-  margin-top: 0%;
-}
-@media (max-width: 468px) {
-  .total {
-    display: flex;
-    flex-direction: column;
-  }
-  .details {
-    max-width: 100%;
-  }
 }
 </style>

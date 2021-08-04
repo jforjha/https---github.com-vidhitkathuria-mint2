@@ -1,6 +1,7 @@
 <template>
   <div class="ToDo.id">
     <Cr />
+    <Landing />
   </div>
 </template>
 
@@ -8,6 +9,8 @@
 // @ is an alias to /src
 import { db } from "../firebase/db";
 import Cr from "../components/cr.vue";
+import Landing from "../components/Landing.vue";
+
 export default {
   name: "ToDo.id",
   data() {
@@ -35,6 +38,6 @@ export default {
   firestore: {
     ToDos: db.collection("ToDos"),
   },
-  components: { Cr },
+  components: { Cr, Landing },
 };
 </script>

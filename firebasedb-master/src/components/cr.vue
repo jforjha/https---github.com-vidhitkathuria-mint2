@@ -144,6 +144,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+@import url("https://fonts.googleapis.com/css2?family=Karla&display=swap");
+* {
+  font-family: "Karla", sans-serif;
+}
 .big {
   display: flex;
   flex-direction: column;
@@ -196,7 +200,7 @@ export default {
         font-weight: 500;
         border-radius: 8px;
         border: 1px solid #0967d2 !important;
-        color: white;
+        color: #0967d2;
         font-size: 1rem;
         outline: none;
         cursor: pointer;
@@ -205,8 +209,8 @@ export default {
 
         transition: 0.5s ease-in-out;
         &:hover {
-          color: #0967d2;
-          background-color: white;
+          color: white;
+          background-color: #0967d2;
         }
         @media (max-width: 468px) {
           width: 70%;
@@ -341,7 +345,7 @@ export default {
             margin-top: 1.5rem;
             height: 40px;
             width: 270px;
-            padding: 0.5rem 1.5rem;
+            padding: 0.6rem 1.5rem;
             line-height: 1rem;
             font-weight: 500;
             border-radius: 8px;

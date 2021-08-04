@@ -4,15 +4,19 @@ import Home from "../views/Home.vue";
 import Cr from "../components/cr.vue";
 import Error from "../pages/Error.vue";
 import Schedule from "../pages/Schedule.vue";
+import Landing from "../components/Landing.vue";
+import Features from "../pages/Features.vue";
+import About from "../pages/About.vue";
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/vidhit/",
+    path: "*",
     name: "Home",
     component: Home,
   },
-  { path: ":id", name: "Cr", component: Cr },
+  { path: "/vidhit", name: "Cr", component: Cr },
+  { path: "/Landing", name: "Landing", component: Landing },
   {
     path: "/404",
     name: "Error",
@@ -26,6 +30,16 @@ const routes = [
     path: "/schedule",
     name: "Schedule",
     component: Schedule,
+  },
+  {
+    path: "/features",
+    name: "Features",
+    component: Features,
+  },
+  {
+    path: "/about",
+    name: "About",
+    component: About,
   },
 ];
 

@@ -90,6 +90,10 @@ export default {
 };
 </script>
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Karla&display=swap");
+* {
+  font-family: "Karla", sans-serif;
+}
 section {
   //   height: 100vh;
   margin-bottom: 10px;
