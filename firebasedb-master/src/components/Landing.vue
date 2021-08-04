@@ -1,5 +1,6 @@
 <template>
   <div class="gurumint">
+    <!-- First Page -->
     <div class="hero">
       <div class="all">
         <div class="nav">
@@ -54,9 +55,15 @@
         </div>
       </div>
     </div>
+    <!-- First Page -->
+
+    <!-- Video-Image/Second-Page -->
     <div class="video">
       <img src="../assets/video.png" alt="" class="video-image" />
     </div>
+    <!-- Video-Image/Second-Page -->
+
+    <!-- Third-Page -->
     <svg
       preserveAspectRatio="none"
       width="100%"
@@ -131,6 +138,9 @@
         <Profile />
       </div>
     </div>
+    <!-- Third-Page -->
+
+    <!-- Fourth-Page -->
     <div class="fourth-page">
       <svg
         class="wave"
@@ -162,7 +172,13 @@
         </button>
       </div>
     </div>
+    <!-- Fourth-Page -->
+
+    <!-- Quotation Page/Fifth-Page -->
     <Quote />
+    <!-- Quotation Page/Fifth-Page -->
+
+    <!-- Super Series/Sixth-Page -->
     <div class="super-series">
       <svg
         class="super-svg"
@@ -192,7 +208,11 @@
         <img src="../assets/Emma.png" alt="" class="super-img" />
       </div>
       <SuperpeerSeries />
+      <!-- Super Series/Sixth-Page -->
+
+      <!-- Footer/Seventh-Page -->
       <Footer />
+      <!-- Footer/Seventh-Page -->
     </div>
   </div>
 </template>
@@ -210,103 +230,7 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Karla:wght@300;400;700&display=swap");
-/* Super-Section */
-.super-series {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.super-svg {
-  color: #f0ecff;
-  transform: rotate(180deg);
-  margin-top: 4%;
-  margin-bottom: -1px;
-}
-.super-section {
-  background-image: linear-gradient(180deg, #f0ecff, hsla(0, 100%, 98%, 0));
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-.super-h1 {
-  margin-top: 7%;
-  font-size: 3rem;
-  font-weight: bolder;
-  margin-bottom: 2%;
-}
-.super-span {
-  background-image: url(https://assets.website-files.com/60f05dbf1d8b772819778341/60f05dbf1d8b773d9d778366_special-text-decoration-01.svg);
-  position: relative;
-  display: inline-block;
-  margin-bottom: -0.4583333333333333em;
-  padding-bottom: 0.4583333333333333em;
-  background-position: 50% 100%;
-  background-size: 100% 0.5208333333333334em;
-  background-repeat: no-repeat;
-}
-.super-p {
-  width: 47%;
-  font-size: 1.4rem;
-  font-weight: normal;
-  margin-bottom: 8%;
-}
-
-/* Super-Section */
-
-/* Fourth-Page */
-button.fourth {
-  background-color: blanchedalmond;
-  padding: 1rem 1.8rem;
-  border-radius: 0.3rem;
-  transition: 0.2s ease-in-out;
-  color: black;
-  font-weight: 400;
-  font-size: 1.2rem;
-  letter-spacing: 0.1px;
-}
-.fourth:hover {
-  background-color: rgb(255, 210, 143);
-}
-.wave {
-  color: #fff4f4;
-  transform: rotate(180deg);
-  margin-top: 4%;
-  margin-bottom: -1px;
-}
-.fourth-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.fourth-section {
-  background-image: linear-gradient(
-    to bottom,
-    rgba(256, 244, 244, 1),
-    rgba(256, 244, 244, 0)
-  );
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-.fourth-content {
-  margin-top: 5%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.fourth-h1 {
-  font-size: 3rem;
-  font-weight: bolder;
-}
-.fourth-p {
-  font-size: 1.3rem;
-  width: 55%;
-  font-weight: bold;
-}
-
-/* Fourth Page */
+/* First-Page */
 .gurumint {
   display: flex;
   flex-direction: column;
@@ -379,12 +303,8 @@ button.fourth {
   object-fit: contain;
   margin-top: 0%;
   vertical-align: top;
-  /* border: solid black 1px; */
 }
-/* .buttons {
-  margin-right: 5%;
-  width: 30%;
-} */
+
 .button-text {
   font-weight: bolder;
   /* margin-right: 5%; */
@@ -501,6 +421,9 @@ button.fourth {
   margin-right: 2%;
   font-weight: bold;
 }
+/* First-Page */
+
+/*Video Image */
 .video {
   display: flex;
   flex-direction: column;
@@ -518,6 +441,9 @@ button.fourth {
   border: solid #fad964 5px;
   border-radius: 2px;
 }
+/*Video Image */
+
+/* Second-Page/Profile Section */
 .svg {
   margin-top: 4%;
   margin-bottom: -1px;
@@ -525,7 +451,6 @@ button.fourth {
   transform: rotate(180deg);
 }
 .second-page {
-  /* background-color: rgba(255, 252, 228, 1); */
   background-image: linear-gradient(
     to bottom,
     rgba(255, 252, 228, 1),
@@ -536,6 +461,9 @@ button.fourth {
   align-items: center;
   width: 100%;
 }
+/* Second-Page/Profile Section */
+
+/* Third-Page/Profile Section */
 .third-section {
   display: flex;
   flex-direction: column;
@@ -559,7 +487,106 @@ button.fourth {
   font-size: 1.2rem;
   text-align: center;
 }
+/* Third-Page/Profile Section */
+
+/* Fourth-Page */
+
+.wave {
+  color: #fff4f4;
+  transform: rotate(180deg);
+  margin-top: 4%;
+  margin-bottom: -1px;
+}
+.fourth-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.fourth-section {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(256, 244, 244, 1),
+    rgba(256, 244, 244, 0)
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.fourth-content {
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .fourth-h1 {
+  font-size: 3rem;
+  font-weight: bolder;
   margin-bottom: 2%;
 }
+
+.fourth-p {
+  font-size: 1.3rem;
+  width: 55%;
+  font-weight: bold;
+}
+button.fourth {
+  background-color: blanchedalmond;
+  padding: 1rem 1.8rem;
+  border-radius: 0.3rem;
+  transition: 0.2s ease-in-out;
+  color: black;
+  font-weight: 400;
+  font-size: 1.2rem;
+  letter-spacing: 0.1px;
+}
+.fourth:hover {
+  background-color: rgb(255, 210, 143);
+}
+
+/* Fourth Page */
+
+/* Fifth-Page/Super-Section */
+.super-series {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.super-svg {
+  color: #f0ecff;
+  transform: rotate(180deg);
+  margin-top: 4%;
+  margin-bottom: -1px;
+}
+.super-section {
+  background-image: linear-gradient(180deg, #f0ecff, hsla(0, 100%, 98%, 0));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.super-h1 {
+  margin-top: 7%;
+  font-size: 3rem;
+  font-weight: bolder;
+  margin-bottom: 2%;
+}
+.super-span {
+  background-image: url(https://assets.website-files.com/60f05dbf1d8b772819778341/60f05dbf1d8b773d9d778366_special-text-decoration-01.svg);
+  position: relative;
+  display: inline-block;
+  margin-bottom: -0.4583333333333333em;
+  padding-bottom: 0.4583333333333333em;
+  background-position: 50% 100%;
+  background-size: 100% 0.5208333333333334em;
+  background-repeat: no-repeat;
+}
+.super-p {
+  width: 47%;
+  font-size: 1.4rem;
+  font-weight: normal;
+  margin-bottom: 8%;
+}
+
+/* Fifth-Page/Super-Section */
 </style>
