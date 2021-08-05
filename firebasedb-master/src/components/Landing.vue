@@ -7,30 +7,71 @@
           <div class="logo">
             <img src="../assets/logo.png" alt="logo" class="logo1" />
           </div>
-          <div class="buttons">
-            <ul v-show="!mobile" class="navigation">
-              <li>
-                <router-link class="button-text" :to="{ name: 'Landing' }"
-                  >HOME</router-link
-                >
-              </li>
-              <li>
-                <router-link class="button-text" :to="{ name: 'Features' }"
-                  >FEATURES</router-link
-                >
-              </li>
-              <li>
-                <router-link class="button-text" :to="{ name: 'About' }"
-                  >ABOUT US</router-link
-                >
-              </li>
-            </ul>
+          <!-- Desktop-View -->
+          <div class="screen-view">
+            <div class="buttons">
+              <ul v-show="!mobile" class="navigation">
+                <li>
+                  <router-link class="button-text" :to="{ name: 'Landing' }"
+                    >HOME</router-link
+                  >
+                </li>
+                <li>
+                  <router-link class="button-text" :to="{ name: 'Features' }"
+                    >FEATURES</router-link
+                  >
+                </li>
+                <li>
+                  <router-link class="button-text" :to="{ name: 'About' }"
+                    >ABOUT US</router-link
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="dashboard">
+              <button class="dash">
+                GO TO DASH-BOARD
+              </button>
+            </div>
           </div>
-          <div class="dashboard">
-            <button class="dash">
-              GO TO DASH-BOARD
-            </button>
-          </div>
+          <!-- Desktop-View -->
+
+          <!-- Mobile-view -->
+
+          
+          <!-- <div class="mobile-icon">
+        <i
+          @click="toggleMobileNav"
+          class="far fa-bars"
+          v-show="mobile"
+          :class="{ 'icon-active': mobileNav }"
+        ></i>
+      </div>
+      <transition name="mobile-nav">
+        <ul v-show="mobileNav" class="dropdown-nav">
+          <li>
+            <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
+          </li>
+          <li>
+            <router-link class="link" :to="{ name: 'About' }"
+              >About</router-link
+            >
+          </li>
+          <li>
+            <router-link class="link" :to="{ name: 'Contact' }"
+              >Contact</router-link
+            >
+          </li>
+          <li>
+            <router-link class="link" :to="{ name: 'Login' }"
+              >Login</router-link
+            >
+          </li>
+        </ul>
+      </transition> -->
+
+
+          <!-- Mobile-view -->
         </div>
         <div class="content">
           <div class="content-two">
@@ -269,12 +310,18 @@ export default {
   /* border: solid black 1px; */
   align-items: center;
 }
+.screen-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
 .buttons {
   display: flex;
   /* flex-direction: row; */
   /* border: solid black 1px; */
 
-  width: 25%;
+  width: 40%;
   align-items: center;
 }
 .navigation {
