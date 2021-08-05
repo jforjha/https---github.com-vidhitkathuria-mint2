@@ -38,39 +38,6 @@
 
           <!-- Mobile-view -->
 
-          
-          <!-- <div class="mobile-icon">
-        <i
-          @click="toggleMobileNav"
-          class="far fa-bars"
-          v-show="mobile"
-          :class="{ 'icon-active': mobileNav }"
-        ></i>
-      </div>
-      <transition name="mobile-nav">
-        <ul v-show="mobileNav" class="dropdown-nav">
-          <li>
-            <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
-          </li>
-          <li>
-            <router-link class="link" :to="{ name: 'About' }"
-              >About</router-link
-            >
-          </li>
-          <li>
-            <router-link class="link" :to="{ name: 'Contact' }"
-              >Contact</router-link
-            >
-          </li>
-          <li>
-            <router-link class="link" :to="{ name: 'Login' }"
-              >Login</router-link
-            >
-          </li>
-        </ul>
-      </transition> -->
-
-
           <!-- Mobile-view -->
         </div>
         <div class="content">
@@ -271,6 +238,17 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Karla:wght@300;400;700&display=swap");
+/* Mobile-view */
+@media only screen and (max-width: 468px) {
+  .gurumint {
+    width: auto;
+    margin-left: auto;
+    border: solid red;
+  }
+}
+
+/* Mobile-view */
+
 /* First-Page */
 .gurumint {
   display: flex;
