@@ -39,7 +39,7 @@
                 >
               </p>
             </div>
-            <div class="info-containe">
+            <div class="info-container">
               <div class="description">
                 <p
                   class="creator-description"
@@ -103,10 +103,12 @@
         </div>
       </div>
     </section>
-    <h2 class="second-container">
-      SERIES
-    </h2>
-    <Series />
+    <section>
+      <h2 class="second-container">
+        SERIES
+      </h2>
+      <Series />
+    </section>
   </div>
 </template>
 <script>
@@ -148,6 +150,21 @@ export default {
 * {
   font-family: "Karla", sans-serif;
 }
+
+//
+
+h2.creator-name {
+  padding: 0;
+}
+
+h2.second-container {
+  margin-top: 2%;
+  margin-left: 20%;
+  text-align: start;
+  padding: 0;
+}
+
+//
 .big {
   display: flex;
   flex-direction: column;
@@ -157,7 +174,7 @@ export default {
     flex-direction: column;
     align-items: center;
     margin: auto;
-    min-width: 440px;
+    min-width: 460px;
   }
   .first-page {
     display: flex;
@@ -234,6 +251,7 @@ export default {
         flex-direction: column;
         align-items: center;
         margin: auto;
+        padding: 0%;
       }
       .user-info {
         display: flex;
@@ -255,6 +273,7 @@ export default {
           font-weight: 600;
           @media (max-width: 468px) {
             font-size: 1.8rem;
+            margin-top: 2%;
           }
         }
         .creator-history {
@@ -266,6 +285,7 @@ export default {
           @media (max-width: 468px) {
             font-size: 120%;
             margin-top: 0px;
+            text-align: center;
           }
         }
 
@@ -275,22 +295,22 @@ export default {
           color: #9e9e9e;
           margin-top: 0px;
           @media (max-width: 468px) {
-            margin: auto;
+            justify-content: center;
           }
         }
       }
       .description {
         margin-top: 0px;
         display: flex;
+        width: 80%;
+        margin-bottom: 3%;
         flex-wrap: wrap;
-        max-width: 66%;
-        margin-bottom: 4%;
         @media (max-width: 468px) {
-          // margin-right: 10%;
-          margin-left: auto;
-          margin-right: auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           margin-top: 5%;
-          max-width: 80%;
+          width: 100%;
         }
         .creator-description {
           align-items: flex-start;
@@ -317,6 +337,7 @@ export default {
           align-items: center;
         }
         .help-line {
+          text-align: start;
           margin-top: 0%;
           font-size: 120%;
           font-weight: bolder;
@@ -405,13 +426,7 @@ export default {
   }
 }
 .second-container {
-  max-width: 35%;
-
   font-size: 130%;
   color: #7e7e7e;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-bottom: 1%;
 }
 </style>

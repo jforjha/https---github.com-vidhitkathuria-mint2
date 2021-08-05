@@ -168,7 +168,7 @@
         </div>
         <Service />
         <button class="fourth">
-          <router-link :to="{ name: 'Cr' }">ALL FEATURES --></router-link>
+          <router-link :to="{ name: 'Cr' }">ALL FEATURES —></router-link>
         </button>
       </div>
     </div>

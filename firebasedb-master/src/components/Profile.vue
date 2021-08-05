@@ -44,8 +44,8 @@
     <!-- card #2 -->
     <div class="profile-card">
       <div class="image">
-        <img class="p1" src="../assets/profile-card/p1.jpeg" alt="p1" />
-        <img class="p-a" src="../assets/profile-card/p1-a.jpeg" alt="p1-a" />
+        <img class="p1" src="../assets/profile-card/p2.jpeg" alt="p1" />
+        <img class="p-a" src="../assets/profile-card/p2-a.jpeg" alt="p1-a" />
       </div>
       <div class="profile-content">
         <h2 class="heading">Masterclass on Fundraising Strategies</h2>
@@ -85,8 +85,8 @@
     <!-- card #3 -->
     <div class="profile-card">
       <div class="image">
-        <img class="p1" src="../assets/profile-card/p1.jpeg" alt="p1" />
-        <img class="p-a" src="../assets/profile-card/p1-a.jpeg" alt="p1-a" />
+        <img class="p1" src="../assets/profile-card/p3.jpeg" alt="p1" />
+        <img class="p-a" src="../assets/profile-card/p3-a.jpeg" alt="p1-a" />
       </div>
       <div class="profile-content">
         <h2 class="heading">Masterclass on Fundraising Strategies</h2>
@@ -126,8 +126,8 @@
     <!-- card #4 -->
     <div class="profile-card">
       <div class="image">
-        <img class="p1" src="../assets/profile-card/p1.jpeg" alt="p1" />
-        <img class="p-a" src="../assets/profile-card/p1-a.jpeg" alt="p1-a" />
+        <img class="p1" src="../assets/profile-card/p4.jpeg" alt="p1" />
+        <img class="p-a" src="../assets/profile-card/p4-a.jpeg" alt="p1-a" />
       </div>
       <div class="profile-content">
         <h2 class="heading">Masterclass on Fundraising Strategies</h2>
@@ -167,8 +167,8 @@
     <!-- card #5 -->
     <div class="profile-card">
       <div class="image">
-        <img class="p1" src="../assets/profile-card/p1.jpeg" alt="p1" />
-        <img class="p-a" src="../assets/profile-card/p1-a.jpeg" alt="p1-a" />
+        <img class="p1" src="../assets/profile-card/p5.jpeg" alt="p1" />
+        <img class="p-a" src="../assets/profile-card/p5-a.jpeg" alt="p1-a" />
       </div>
       <div class="profile-content">
         <h2 class="heading">Masterclass on Fundraising Strategies</h2>
@@ -208,8 +208,8 @@
     <!-- card #6 -->
     <div class="profile-card">
       <div class="image">
-        <img class="p1" src="../assets/profile-card/p1.jpeg" alt="p1" />
-        <img class="p-a" src="../assets/profile-card/p1-a.jpeg" alt="p1-a" />
+        <img class="p1" src="../assets/profile-card/p6.jpeg" alt="p1" />
+        <img class="p-a" src="../assets/profile-card/p6-a.jpeg" alt="p1-a" />
       </div>
       <div class="profile-content">
         <h2 class="heading">Masterclass on Fundraising Strategies</h2>
@@ -275,7 +275,7 @@ button.enroll {
   margin: 1rem;
   transition: 0.2s ease-in-out;
 }
-.enroll:hover {
+button.enroll:hover {
   background-color: rgb(255, 210, 143);
 }
 a {
@@ -305,18 +305,19 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 3%;
   position: relative;
   margin-bottom: 6%;
+  width: 100%;
+  height: 100%;
 }
 .p1 {
-  height: 60%;
-  width: 60%;
+  height: 100%;
+  width: 65%;
   object-fit: cover;
   border: solid 5px #f8f3d0;
   padding: 1px;
   color: #f8f0b1;
-  border-radius: 20px;
+  border-radius: 20px
 }
 .p-a {
   border: solid 6px #fad964;
@@ -326,11 +327,12 @@ a {
   z-index: 1;
   /* height: 90px;
   width: 90px; */
-  height: 45%;
+  height: 40%;
   padding: 6px;
   object-fit: contain;
   background-color: white;
   border-radius: 50%;
+
 }
 .profile-content {
   margin-top: 1%;
@@ -339,9 +341,10 @@ a {
   align-items: center;
   margin-bottom: 0;
 }
-.heading {
+.profile-content > .heading {
   font-size: 1.3rem;
-  margin-bottom: 10px;
+  padding: 0;
+  margin-bottom: 2%;
 }
 .profile-name {
   margin-bottom: 15px;

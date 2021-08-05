@@ -5,16 +5,22 @@
 </template>
 
 <style lang="scss">
+// @import url("https://fonts.googleapis.com/css2?family=Karla&display=swap");
+
 @import url("https://fonts.googleapis.com/css2?family=Karla&display=swap");
-#app {
+* {
   font-family: "Karla", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #222;
 }
+// #app {
+//   font-family: "Karla", sans-serif;
+//   -webkit-font-smoothing: antialiased;
+//   -moz-osx-font-smoothing: grayscale;
+//   text-align: center;
+//   color: #222;
+// }
 
 #nav {
-  padding: 30px;
+  // padding: 30px;
+  margin-top: 40px;
 }
 </style>

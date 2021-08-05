@@ -2,7 +2,7 @@
   <section>
     <div class="second-page">
       <div class="card">
-        <div class="image">
+        <div class="cr-image">
           <img
             src="https://firebasestorage.googleapis.com/v0/b/chatpoint1-16505.appspot.com/o/cardImage.jpeg?alt=media&token=564b5ffe-6b8b-4db5-aa56-7adba9150e30"
             alt="card"
@@ -89,11 +89,27 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css2?family=Karla&display=swap");
 * {
   font-family: "Karla", sans-serif;
 }
+
+//
+
+p.limit {
+  white-space: nowrap;
+}
+
+div.image {
+  margin: 0;
+}
+
+div.card {
+  padding: 2rem 0rem;
+}
+
+//
 section {
   //   height: 100vh;
   margin-bottom: 10px;
@@ -102,79 +118,83 @@ section {
   padding-top: 10px;
 
   .second-page {
-    margin-left: 25%;
-    margin-right: auto;
-
+    margin: 1% auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     max-width: 60%;
     @media (max-width: 468px) {
-      display: block;
-      min-width: 440px;
-      margin-left: auto;
-      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 30%;
     }
 
     .card {
-      padding-top: 30px;
-      padding-bottom: 20px;
       display: flex;
       flex-direction: row;
-      justify-items: center;
+      justify-content: center;
+      align-items: center;
       background-color: #fffaf0;
       box-shadow: 2px 8px 8px #f7ebd8;
       @media (max-width: 468px) {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+        padding-left: 70%;
+        margin-bottom: 40%;
       }
 
-      .image {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
+      .cr-image {
         object-fit: contain;
-        max-width: 250px;
-        max-height: 170px;
+        padding-top: 2%;
+        padding-bottom: 1%;
+        padding-left: 3%;
+        width: 70%;
+        padding-right: 0%;
+
+        // max-width: 250px;
+        // max-height: 170px;
         @media (max-width: 468px) {
+          // border: black solid;
+          // align-items: center;
+          // min-width: 330px;
+          // min-height: 200px;
+          // object-fit: contain;
+          // align-items: center;
+          // margin-left: auto;
+          // margin-right: auto;
+          // padding: 0%;
+          display: flex;
+          flex-direction: column;
           align-items: center;
-          min-width: 330px;
-          min-height: 200px;
-          object-fit: contain;
-          align-items: center;
-          margin-left: auto;
-          margin-right: auto;
+          width: 100%;
+          padding-right: 10%;
         }
 
         .card-image {
-          margin-left: 20%;
-          width: 100%;
-          height: 100%;
+          width: 80%;
           border-radius: 8px;
           vertical-align: top;
 
           @media (max-width: 468px) {
-            //   display: flex;
-            //   flex-direction: column;
-            //   align-items: center;
-            margin-left: auto;
+            width: 85%;
+            margin-bottom: 10%;
+            margin-right: 20%;
           }
         }
       }
       .information {
-        flex: 1;
         display: flex;
         flex-direction: column;
-        margin-left: 10%;
         align-items: flex-start;
-        margin-right: 5%;
+
         .name {
           display: flex;
           font-size: 13px;
           font-weight: bolder;
           margin-bottom: 3px;
-
           text-align: justify;
         }
         .about {
