@@ -3,6 +3,10 @@
     <form v-if="!submitted">
       <h1>Provide Your Details</h1>
       <label>First Name</label>
+      
+      <input id="eductaor" type="text" required v-model="user.prevRoute" />
+      <label>{{this.prevRoute.path}}</label>
+
       <input id="firstname" type="text" required v-model="user.firstname" />
       <label>Last Name</label>
       <input type="text" required v-model="user.lastname" id="lastname" />
@@ -43,6 +47,7 @@
         v-on:click="
           makepayment();
           post();
+
         "
       />
     </form>
@@ -56,17 +61,25 @@ export default {
     return {
       user: {
         fromDateVal: "",
-
         firstname: "",
         lastname: "",
         email: "",
         number: "",
+         prevRoute: null
+ 
       },
+   beforeRouteEnter(to, from, next) {
+  next(vm => {
+    vm.prevRoute = from
+  })
+},
+ 
       submitted: false,
     };
   },
 
   methods: {
+
     post() {
       axios
         .post(

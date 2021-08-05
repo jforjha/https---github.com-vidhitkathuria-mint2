@@ -3,7 +3,7 @@
     <section>
       <div class="big">
         <div class="first-page">
-          <!-- <router-link v-bind:to="'/' + ToDo.id">{{ ToDo.name }}</router-link> -->
+         
           <div class="left-profile">
             <img
               height="100"
@@ -13,7 +13,18 @@
               alt="creator"
             />
             <button class="subscribe">Subscribe</button>
-          </div>
+           
+          <input
+        type="button"
+        style="background-color: lightgreen; height: 50px; width: 150px"
+        
+       
+        v-on:click=shareViaWebShare()
+      />
+            </div>
+
+         
+         
           <div class="right-profile">
             <div class="user-info">
               <h2 class="creator-name" v-for="ToDo in ToDos" :key="ToDo.id">
@@ -137,6 +148,14 @@ export default {
         this.newItem = "";
       }
     },
+shareViaWebShare() {
+  navigator.share({
+    title: 'Title to be shared',
+    text: 'Text to be shared',
+    url: ""
+  })
+}
+
   },
   firestore: {
     ToDos: db.collection("ToDos"),
