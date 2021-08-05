@@ -13,10 +13,12 @@
               alt="creator"
             />
             <button class="subscribe">Subscribe</button>
-           
-          <input
+           <br>
+          <input class="share"
         type="button"
-        style="background-color: lightgreen; height: 50px; width: 150px"
+        label="Share Your Profile"
+        style="height:50px;"
+      
         
        
         v-on:click=shareViaWebShare()
@@ -448,4 +450,11 @@ h2.second-container {
   font-size: 130%;
   color: #7e7e7e;
 }
+ .share{
+                background: url('../assets/share.png') no-repeat;
+                cursor:pointer;
+                border: none;
+                display:block;
+                width: 80px;
+            }
 </style>

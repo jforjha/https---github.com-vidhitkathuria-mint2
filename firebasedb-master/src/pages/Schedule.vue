@@ -4,8 +4,7 @@
       <h1>Provide Your Details</h1>
       <label>First Name</label>
       
-      <input id="eductaor" type="text" required v-model="user.prevRoute" />
-      <label>{{this.prevRoute.path}}</label>
+     
 
       <input id="firstname" type="text" required v-model="user.firstname" />
       <label>Last Name</label>
@@ -65,14 +64,10 @@ export default {
         lastname: "",
         email: "",
         number: "",
-         prevRoute: null
+      
  
       },
-   beforeRouteEnter(to, from, next) {
-  next(vm => {
-    vm.prevRoute = from
-  })
-},
+
  
       submitted: false,
     };
