@@ -3,9 +3,6 @@
     <form v-if="!submitted">
       <h1>Provide Your Details</h1>
       <label>First Name</label>
-      
-     
-
       <input id="firstname" type="text" required v-model="user.firstname" />
       <label>Last Name</label>
       <input type="text" required v-model="user.lastname" id="lastname" />
@@ -14,8 +11,20 @@
       <input type="email" id="email" required v-model="user.email" />
       <label>Phone Number</label>
       <input type="text" id="number" v-model="user.number" />
+      <br>
+      
+    <div id="calendly" class="calendly-inline-widget" data-url="https://calendly.com/vlogdelhi" style="min-width:20vw;height:30vh;vertical-align: baseline;"></div>
 
-      <label for="party">Enter a date and time to reserved your slot :)</label>
+             <!-- <input
+        type="button"
+        v-model="user.url"
+        style="background-color: grey; height: 50px; width: 150px"
+        id="url1"
+        value="Educator Name"
+        v-on:click="lastRouteName();"
+      />
+            <input type="text" id="url" v-model="user.url" /> -->
+      <!-- <label for="party">Enter a date and time to reserved your slot :)</label>
       <input
         type="datetime-local"
         id="fromDateVal"
@@ -26,7 +35,7 @@
         min="2021-08-01T00:00"
         max="2021-08-31T00:00"
         placeholder="Select Date"
-      />
+      /> -->
       <!-- <v-date-picker v-model="fromDateVal"></v-date-picker> -->
       <br />
 
@@ -45,9 +54,7 @@
         value="Payment Checkout"
         v-on:click="
           makepayment();
-          post();
-
-        "
+          post();"
       />
     </form>
   </div>
@@ -55,6 +62,9 @@
 
 <script>
 import axios from "axios";
+/* eslint-disable no-useless-escape */
+import postscribe from 'postscribe'
+
 export default {
   data() {
     return {
@@ -64,16 +74,28 @@ export default {
         lastname: "",
         email: "",
         number: "",
-      
- 
+      // url:""
       },
-
- 
       submitted: false,
     };
   },
 
+mounted: function () {
+    postscribe('#calendly', `<script src="https://assets.calendly.com/assets/external/widget.js" ><\/script>`)
+  },
+
   methods: {
+    lastRouteName  : function() {
+  let returnVal = '';
+  const routerStack = this.$router.history.stack;
+  const idx = this.$router.history.index;
+
+  if (idx > 0) {
+    returnVal = routerStack[idx - 1].name;
+  }
+
+  return returnVal;
+},
 
     post() {
       axios
