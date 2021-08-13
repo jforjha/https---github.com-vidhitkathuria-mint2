@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <form v-if="!submitted">
-      <h1>Provide Your Details</h1>
+<div>
+      <!-- <h1>Provide Your Details</h1>
       <label>First Name</label>
       <input id="firstname" type="text" required v-model="user.firstname" />
       <label>Last Name</label>
@@ -11,9 +10,12 @@
       <input type="email" id="email" required v-model="user.email" />
       <label>Phone Number</label>
       <input type="text" id="number" v-model="user.number" />
-      <br>
+      <br> -->
       
-    <div id="calendly" class="calendly-inline-widget" data-url="https://calendly.com/vlogdelhi" style="min-width:20vw;height:30vh;vertical-align: baseline;"></div>
+    <div id="calendly" class="calendly-inline-widget" data-url="https://calendly.com/vlogdelhi/dawn-dickson" 
+    style="min-width:100vw;height:100vh;position:relative; 
+    margin-top:-100px;
+    "></div>
 
              <!-- <input
         type="button"
@@ -37,7 +39,7 @@
         placeholder="Select Date"
       /> -->
       <!-- <v-date-picker v-model="fromDateVal"></v-date-picker> -->
-      <br />
+    
 
       <!-- <input type="time" v-model="time"  placeholder="Select Time"  min="08:00" max="20:00" required> -->
       <!--          
@@ -49,15 +51,13 @@
 
       <input
         type="button"
-        style="background-color: lightgreen; height: 50px; width: 150px"
+              style="background-color: lightgreen; height: 50px; width: 20vw;left:40vw;position:relative; "
         id="rzpbutton"
-        value="Payment Checkout"
-        v-on:click="
-          makepayment();
-          post();"
-      />
-    </form>
-  </div>
+        value="Pay To Reserve Your Slot"
+        v-on:click= makepayment();
+          />
+
+</div>
 </template>
 
 <script>
@@ -74,7 +74,7 @@ export default {
         lastname: "",
         email: "",
         number: "",
-      // url:""
+      //  url: returnVal
       },
       submitted: false,
     };
@@ -86,7 +86,7 @@ mounted: function () {
 
   methods: {
     lastRouteName  : function() {
-  let returnVal = '';
+  var returnVal = '';
   const routerStack = this.$router.history.stack;
   const idx = this.$router.history.index;
 
@@ -120,16 +120,18 @@ mounted: function () {
         image: "/your_logo.png",
         handler: function(response) {
           alert(
+            "Your Transaction is Successful"+" "+
+           
             "Save This Payment ID For Future Referce  " +
               " " +
               response.razorpay_payment_id
           );
         },
-        prefill: {
-          name: this.user.name,
-          email: this.user.email,
-          contact: this.user.number,
-        },
+        // prefill: {
+        //   name: this.user.name,
+        //   email: this.user.email,
+        //   contact: this.user.number,
+        // },
         notes: {
           address: "Hello World",
         },
@@ -164,7 +166,7 @@ mounted: function () {
 };
 </script>
 
-<style>
+<style scoped>
 form {
   max-width: 420px;
   margin: 30px auto;
@@ -228,4 +230,5 @@ input[type="checkbox"] {
   font-size: 0.8em;
   font-weight: bold;
 }
+
 </style>

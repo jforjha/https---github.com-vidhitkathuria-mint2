@@ -14,15 +14,21 @@
             />
             <button class="subscribe">Subscribe</button>
            <br>
-          <input class="share"
+          <!-- <input class="share"
         type="button"
         label="Share Your Profile"
         style="height:50px;"
       
-        
-       
         v-on:click=shareViaWebShare()
-      />
+      /> -->
+<br/>
+
+
+
+
+<p>
+<Facebook :url=url style="position:relative"></Facebook> <WhatsApp :url=url style="position:relative"></WhatsApp> <Telegram :url=url style="position:relative" ></Telegram> <Linkedin :url=url style="position:relative"></Linkedin></p>
+
             </div>
 
          
@@ -125,11 +131,17 @@
   </div>
 </template>
 <script>
+import { Facebook } from 'vue-socialmedia-share';
+import { WhatsApp } from 'vue-socialmedia-share';
+import { Telegram } from 'vue-socialmedia-share';
+import { Linkedin } from 'vue-socialmedia-share';
 import { db } from "../firebase/db";
 import Series from "./Series.vue";
+var currentRoute = window.location;
 export default {
   data() {
     return {
+    url: String(currentRoute),
       ToDos: [],
       newItem: "",
     };
@@ -145,25 +157,25 @@ export default {
         await db.collection("ToDos").add({ button1: this.newItem });
         await db.collection("ToDos").add({ button2: this.newItem });
         await db.collection("ToDos").add({ button3: this.newItem });
-        await db.collection("ToDos").add({ button3: this.newItem });
+        
 
         this.newItem = "";
       }
     },
-shareViaWebShare() {
-  navigator.share({
-    title: 'Title to be shared',
-    text: 'Text to be shared',
-    url: ""
-  })
-}
+// shareViaWebShare() {
+//   navigator.share({
+//     title: 'Title to be shared',
+//     text: 'Text to be shared',
+//     url: ""
+//   })
+// }
 
   },
   firestore: {
     ToDos: db.collection("ToDos"),
   },
 
-  components: { Series },
+  components: { Series,Facebook,WhatsApp,Telegram,Linkedin },
 };
 </script>
 <style lang="scss" scoped>

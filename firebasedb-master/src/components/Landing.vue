@@ -3,43 +3,8 @@
     <!-- First Page -->
     <div class="hero">
       <div class="all">
-        <div class="nav">
-          <div class="logo">
-            <img src="../assets/logo.png" alt="logo" class="logo1" />
-          </div>
-          <!-- Desktop-View -->
-          <div class="screen-view">
-            <div class="buttons">
-              <ul v-show="!mobile" class="navigation">
-                <li>
-                  <router-link class="button-text" :to="{ name: 'Landing' }"
-                    >HOME</router-link
-                  >
-                </li>
-                <li>
-                  <router-link class="button-text" :to="{ name: 'Features' }"
-                    >FEATURES</router-link
-                  >
-                </li>
-                <li>
-                  <router-link class="button-text" :to="{ name: 'About' }"
-                    >ABOUT US</router-link
-                  >
-                </li>
-              </ul>
-            </div>
-            <div class="dashboard">
-              <button class="dash">
-                GO TO DASH-BOARD
-              </button>
-            </div>
-          </div>
-          <!-- Desktop-View -->
-
-          <!-- Mobile-view -->
-
-          <!-- Mobile-view -->
-        </div>
+        <!-- Navbar -->
+        <Nav />
         <div class="content">
           <div class="content-two">
             <h1 class="host">
@@ -231,8 +196,9 @@ import Service from "./Service.vue";
 import Quote from "./Quote.vue";
 import SuperpeerSeries from "./SuperpeerSeries.vue";
 import Footer from "./Footer.vue";
+import Nav from "./Nav.vue"
 export default {
-  components: { Profile, Service, Quote, SuperpeerSeries, Footer },
+  components: { Profile, Service, Quote, SuperpeerSeries, Footer, Nav },
 };
 </script>
 
@@ -241,10 +207,67 @@ export default {
 /* Mobile-view */
 @media only screen and (max-width: 468px) {
   .gurumint {
-    width: auto;
+    min-width: 1400px;
     margin-left: auto;
     border: solid red;
   }
+  .hero {
+    border: #fad964 solid;
+    min-width: 1200px;
+  }
+  .all {
+    border: solid red;
+  }
+  .nav {
+    border: solid black;
+  }
+  .screen-view {
+    border: solid violet;
+  }
+  .buttons {
+    border: turquoise solid;
+    min-width: 60%;
+  }
+  .navigation {
+    border: steelblue solid;
+  }
+  .dashboard {
+    border: tomato solid;
+    min-height: 100px;
+    padding-top: 12px;
+
+  }
+  .dash{
+    border: solid black;
+  
+  }
+  .button-text {
+    border: brown solid;
+    
+  }
+  .logo {
+    /* min-width: 150px; */
+    min-height: 100px;
+    border: chartreuse solid;
+  }
+  .logo1 {
+    min-height: 100px;
+  }
+  .button-span {
+    font-size: 2rem;
+  }
+
+  .third-content{
+    border: black solid;
+    
+  }
+  .third-h1{
+    border: solid red;
+    width: 100%;
+    
+  }
+
+
 }
 
 /* Mobile-view */
@@ -332,7 +355,6 @@ export default {
 
 .button-text {
   font-weight: bolder;
-  /* margin-right: 5%; */
   padding-left: 0;
   white-space: nowrap;
   color: grey;

@@ -1,9 +1,24 @@
 <template>
-  <h1>This is Features Page</h1>
+  <div class="nav-container">
+    <Nav />
+    <!-- <h1>This is Features Page</h1> -->
+    
+  </div>
 </template>
 
 <script>
-export default {};
+import Nav from "../components/Nav.vue";
+export default {
+  
+  components: {
+    Nav,
+  },
+};
 </script>
 
-<style></style>
+<style scoped>
+.nav-container {
+  width: 85vw;
+  margin: 5% auto;
+}
+</style>
