@@ -30,7 +30,16 @@
 <Facebook :url=url style="position:relative"></Facebook> <WhatsApp :url=url style="position:relative"></WhatsApp> <Telegram :url=url style="position:relative" ></Telegram> <Linkedin :url=url style="position:relative"></Linkedin></p>
 
             </div>
-
+<template>
+    <div id="demo">
+        <vue-metamask 
+            userMessage="msg" 
+            @onComplete="onComplete"
+            
+        >
+        </vue-metamask>
+    </div>
+</template>
          
          
           <div class="right-profile">
@@ -131,6 +140,7 @@
   </div>
 </template>
 <script>
+import VueMetamask from 'vue-metamask';
 import { Facebook } from 'vue-socialmedia-share';
 import { WhatsApp } from 'vue-socialmedia-share';
 import { Telegram } from 'vue-socialmedia-share';
@@ -175,7 +185,7 @@ export default {
     ToDos: db.collection("ToDos"),
   },
 
-  components: { Series,Facebook,WhatsApp,Telegram,Linkedin },
+  components: { Series,Facebook,WhatsApp,Telegram,Linkedin, VueMetamask },
 };
 </script>
 <style lang="scss" scoped>

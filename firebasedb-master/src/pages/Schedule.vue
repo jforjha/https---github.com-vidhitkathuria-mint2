@@ -12,7 +12,7 @@
       <input type="text" id="number" v-model="user.number" />
       <br> -->
       
-    <div id="calendly" class="calendly-inline-widget" data-url="https://calendly.com/vlogdelhi/dawn-dickson" 
+    <div id="calendly" class="calendly-inline-widget" data-url="https://calendly.com/gurumint/dawn-dickson" 
     style="min-width:100vw;height:100vh;position:relative; 
     margin-top:-100px;
     "></div>
