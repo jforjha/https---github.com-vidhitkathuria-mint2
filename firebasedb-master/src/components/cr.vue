@@ -28,18 +28,17 @@
 
 <p>
 <Facebook :url=url style="position:relative"></Facebook> <WhatsApp :url=url style="position:relative"></WhatsApp> <Telegram :url=url style="position:relative" ></Telegram> <Linkedin :url=url style="position:relative"></Linkedin></p>
-
-            </div>
-<template>
-    <div id="demo">
+<br/>    
+  <button  id="eth_tip_button" @click="visible = !visible">Buy My Crypto</button>
         <vue-metamask 
-            userMessage="msg" 
-            @onComplete="onComplete"
-            
-        >
+        
+          v-if="visible"
+        
+            @onComplete="onComplete">
+     
         </vue-metamask>
-    </div>
-</template>
+ 
+  </div>
          
          
           <div class="right-profile">
@@ -140,6 +139,8 @@
   </div>
 </template>
 <script>
+ /* eslint-disable */ 
+
 import VueMetamask from 'vue-metamask';
 import { Facebook } from 'vue-socialmedia-share';
 import { WhatsApp } from 'vue-socialmedia-share';
@@ -154,10 +155,14 @@ export default {
     url: String(currentRoute),
       ToDos: [],
       newItem: "",
+      visible: false,
+
     };
   },
-
   methods: {
+     onComplete(data){
+                console.log('metaMaskAddress', 0x003ff0da735f8690aedbc474e55cc7c370765cc7);
+            },
     async addItem() {
       if (this.newItem) {
         await db.collection("ToDos").add({ name: this.newItem });
@@ -168,7 +173,6 @@ export default {
         await db.collection("ToDos").add({ button2: this.newItem });
         await db.collection("ToDos").add({ button3: this.newItem });
         
-
         this.newItem = "";
       }
     },
@@ -179,13 +183,11 @@ export default {
 //     url: ""
 //   })
 // }
-
   },
   firestore: {
     ToDos: db.collection("ToDos"),
   },
-
-  components: { Series,Facebook,WhatsApp,Telegram,Linkedin, VueMetamask },
+  components: { Series,Facebook,WhatsApp,Telegram,Linkedin,VueMetamask, },
 };
 </script>
 <style lang="scss" scoped>
@@ -193,20 +195,16 @@ export default {
 * {
   font-family: "Karla", sans-serif;
 }
-
 //
-
 h2.creator-name {
   padding: 0;
 }
-
 h2.second-container {
   margin-top: 2%;
   margin-left: 20%;
   text-align: start;
   padding: 0;
 }
-
 //
 .big {
   display: flex;
@@ -227,7 +225,6 @@ h2.second-container {
       display: flex;
       flex-direction: column;
     }
-
     .left-profile {
       flex: 1;
       // border: solid black 1px;
@@ -241,7 +238,6 @@ h2.second-container {
         margin: auto;
         align-items: center;
       }
-
       .creator-image {
         border-radius: 100%;
         height: 350px;
@@ -266,7 +262,6 @@ h2.second-container {
         cursor: pointer;
         margin-left: auto;
         margin-right: auto;
-
         transition: 0.5s ease-in-out;
         &:hover {
           color: white;
@@ -288,7 +283,6 @@ h2.second-container {
       padding-top: 1.5rem;
       margin-left: 0%;
       padding-left: 1.75rem;
-
       @media (max-width: 468px) {
         display: flex;
         flex-direction: column;
@@ -331,7 +325,6 @@ h2.second-container {
             text-align: center;
           }
         }
-
         .location {
           display: flex;
           font-size: 120%;
@@ -376,7 +369,6 @@ h2.second-container {
           display: flex;
           flex-direction: column;
           margin-top: 5%;
-
           align-items: center;
         }
         .help-line {
@@ -392,7 +384,6 @@ h2.second-container {
             font-weight: bolder;
           }
         }
-
         .creator-features {
           margin-top: 0px;
           display: flex;
@@ -418,7 +409,6 @@ h2.second-container {
             color: blanchedalmond;
             font-size: 120%;
             outline: none;
-
             cursor: pointer;
             margin-right: 29px;
             transition: 0.5s ease-in-out;
@@ -479,4 +469,14 @@ h2.second-container {
                 display:block;
                 width: 80px;
             }
+            #eth_tip_button {
+	position: relative;
+
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-weight: 500;
+	text-decoration: none;
+	color: #ffffff;
+	background: #2629ec;
+}
 </style>
