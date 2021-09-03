@@ -29,14 +29,71 @@
 <p>
 <Facebook :url=url style="position:relative"></Facebook> <WhatsApp :url=url style="position:relative"></WhatsApp> <Telegram :url=url style="position:relative" ></Telegram> <Linkedin :url=url style="position:relative"></Linkedin></p>
 <br/>    
-  <button  id="eth_tip_button" @click="visible = !visible">Buy My Crypto</button>
-        <vue-metamask 
+<button id="eth_tip_button"   v-on:click="getAccount()">Connect with Metamask</button>
+<br>
+  <button class="sendEthButton btn"   id="eth_tip_button"  v-on:click="sendEthButton()" >Pay With Metamask</button>
+  <br>
+<button   id="eth_tip_button"  v-on:click="opendialog()" >Pay With Cards</button>
+
+
+ <foo name="example"> 
+
+
+  <br>
+  <h1
+   style=" position: fixed;
+    left: 45%;">Hey Investor! <br>
+  </h1>
+  
+   <input type="text" 
+      v-model="user.Name"
+       id="Name" 
+       style=" position: fixed;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);"
+       placeholder="Name" />
+
+      <input type="text" 
+      v-model="user.walletAddress"
+       id="walletAddress" 
+       style=" position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);"
+       placeholder="Wallet Address" />
+<br>
+        <input type="text" 
+      v-model="user.email"
+       id="email" 
+       style=" position: fixed;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);"
+       placeholder="Email Address" />
+   <br>
+     <input type="text" 
+      v-model="user.phone"
+       id="phone" 
+       style=" position: fixed;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);"
+       placeholder="Phone Number" />
+   <br>
+   <button class="sendEthButton btn" 
+   id="eth_tip_button" 
+   style=" position: fixed;
+    left: 50%;
+    top: 60%;
+    transform: translate(-50%, -50%);"
+       placeholder="Type Your Wallet Address"
+     v-on:click="makepayment();posts()" >Pay Now</button>
+ </foo>
+
+ 
+
         
-          v-if="visible"
-        
-            @onComplete="onComplete">
-     
-        </vue-metamask>
  
   </div>
          
@@ -139,30 +196,54 @@
   </div>
 </template>
 <script>
- /* eslint-disable */ 
+// eslint-disable-next-line
+/* eslint-disable */
 
-import VueMetamask from 'vue-metamask';
+import getWeb3 from '../contracts/web3';
+import contractAbi from '../contracts/abi';
 import { Facebook } from 'vue-socialmedia-share';
 import { WhatsApp } from 'vue-socialmedia-share';
 import { Telegram } from 'vue-socialmedia-share';
 import { Linkedin } from 'vue-socialmedia-share';
 import { db } from "../firebase/db";
 import Series from "./Series.vue";
+import axios from "axios";
+import Vue from 'vue'
+import VModal from 'vue-js-modal/dist/ssr.nocss'
+
+import 'vue-js-modal/dist/styles.css'
+const contractAddress = '0x003ff0da735f8690aedbc474e55cc7c370765cc7';
+Vue.use(VModal, { componentName: 'Foo' })
 var currentRoute = window.location;
+let accounts = [];
+
 export default {
+
   data() {
+    
     return {
+     web3: "",
+      modal:false,
+      account: "",
+      contractInstance: "",
+  
+      isLoading: false,
     url: String(currentRoute),
       ToDos: [],
       newItem: "",
-      visible: false,
-
+    
+user:{
+  walletAddress:"",
+  Name:"",
+  email:"",
+  phone:""
+},
+submitted: false,
     };
   },
+  
+   
   methods: {
-     onComplete(data){
-                console.log('metaMaskAddress', 0x003ff0da735f8690aedbc474e55cc7c370765cc7);
-            },
     async addItem() {
       if (this.newItem) {
         await db.collection("ToDos").add({ name: this.newItem });
@@ -176,6 +257,95 @@ export default {
         this.newItem = "";
       }
     },
+     opendialog () {
+        this.$modal.show('example')
+    },
+    sendEthButton ()  {
+      
+  ethereum
+    .request({
+      method: 'eth_sendTransaction',
+      params: [
+        {
+          from:  accounts[0],
+          to: '0x0f6b0e3d75175bb97de6dc5339447182be1f8730',
+          value: '0x00',
+         //gasPrice: '0x09184e72a000',
+        gas: '3000000',
+           data:
+      '0xd3fc9864000000000000000000000000136adcc423732bbda6406f2ddcb5bae123a4cbc300000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000000000006368747470733a2f2f697066732e696f2f697066732f516d58436d726e546962686861396d314e436836394e3451424d534a6b6257547a6764645a50656f4731614a4a743f66696c656e616d653d53637265656e73686f7425323028323533292e706e670000000000000000000000000000000000000000000000000000000000'
+        },
+      ],
+    })
+    .then((txHash) => console.log(txHash))
+    .catch((error) => console.error);
+},
+async  getAccount() {
+   
+  accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+},
+beforeOpen (event) {
+      console.log('Opening...')
+    },
+    beforeClose (event) {
+      console.log('Closing...')
+      // What a gamble... 50% chance to cancel closing
+      if (Math.random() < 0.5) {
+        event.cancel()
+      }
+    },
+
+makepayment: function() {
+  
+      var options = {
+        key: "rzp_test_astk95KRrqNO0x",
+        // key_secret : "mVybwVFhZAqr6Eg1OPGP3Rcs",
+        amount: 500 * 100,
+        name: "GuruMint",
+        description: "Pay Your Educator",
+        image: "/your_logo.png",
+        handler: function(response) {
+          alert(
+            "Your Transaction is Successful"+" "+
+           
+            "Save This Payment ID For Future Referce  " +
+              " " +
+              response.razorpay_payment_id
+          );
+        },
+        prefill: {
+        
+          name: this.user.Name,
+          email: this.user.email,
+          contact: this.user.phone,
+        },
+        // notes: {
+        //   WalletAddress: "",
+        // },
+        theme: {
+          color: "#0EB9F2",
+        },
+      };
+      const rzp1 = new window.Razorpay(options);
+
+      rzp1.open();
+      // event.preventDefault();
+    },
+     posts() {
+      axios
+        .post(
+          "https://chatpoint1-16505-default-rtdb.firebaseio.com/posts.json",
+          this.user,
+          { emulateJSON: true }
+        )
+        .then(function(data) {
+          console.log(data);
+          this.submitted = true;
+        });
+    },
+
+   
+  
 // shareViaWebShare() {
 //   navigator.share({
 //     title: 'Title to be shared',
@@ -183,11 +353,16 @@ export default {
 //     url: ""
 //   })
 // }
+
   },
+
   firestore: {
     ToDos: db.collection("ToDos"),
   },
-  components: { Series,Facebook,WhatsApp,Telegram,Linkedin,VueMetamask, },
+   
+  components: { Series,Facebook,WhatsApp,Telegram,Linkedin },
+  
+
 };
 </script>
 <style lang="scss" scoped>
@@ -479,4 +654,9 @@ h2.second-container {
 	color: #ffffff;
 	background: #2629ec;
 }
+
+
+
+
+
 </style>
