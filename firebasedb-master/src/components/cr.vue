@@ -1,6 +1,7 @@
 <template>
   <div>
     <section>
+      <Nav/>
       <div class="big">
         <div class="first-page">
          
@@ -210,6 +211,7 @@ import Series from "./Series.vue";
 import axios from "axios";
 import Vue from 'vue'
 import VModal from 'vue-js-modal/dist/ssr.nocss'
+import Nav from "./Nav.vue"
 
 import 'vue-js-modal/dist/styles.css'
 const contractAddress = '0x003ff0da735f8690aedbc474e55cc7c370765cc7';
@@ -360,7 +362,7 @@ makepayment: function() {
     ToDos: db.collection("ToDos"),
   },
    
-  components: { Series,Facebook,WhatsApp,Telegram,Linkedin },
+  components: { Series,Facebook,WhatsApp,Telegram,Linkedin,Nav },
   
 
 };

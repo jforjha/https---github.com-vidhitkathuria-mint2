@@ -148,7 +148,7 @@
     <!-- Fourth-Page -->
 
     <!-- Quotation Page/Fifth-Page -->
-    <Quote />
+   
     <!-- Quotation Page/Fifth-Page -->
 
     <!-- Super Series/Sixth-Page -->

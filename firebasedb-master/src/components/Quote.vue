@@ -1,7 +1,7 @@
 <template>
-  <div class="quote-section">
+  <div class="quote-section" >
     <h1 class="quote-h1">Don’t just take our word for it</h1>
-    <h2 class="quote-h2">
+    <h2 class="quote-h2"  >
       “It's one of my favourite platforms! Not only is the team behind Superpeer
       super supportive and talented, but the product itself is great to use. I
       can't imagine Superpeer ever going away, thank you for all you do!”
@@ -48,6 +48,7 @@ export default {};
   width: 70%;
   font-style: italic;
   word-spacing: 10px;
+  
 }
 .image-section {
   display: flex;
@@ -70,5 +71,6 @@ export default {};
     font-weight: bolder;
     margin-bottom: 2%;
 }
+
 </style>
-https://assets.website-files.com/60f05dbf1d8b772819778341/60f05dbf1d8b776d6577837a_testimonial-quote.svg
+

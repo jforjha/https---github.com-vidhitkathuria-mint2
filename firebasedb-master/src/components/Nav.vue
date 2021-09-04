@@ -61,17 +61,17 @@
         </ul>
 
         <div class="dashboard">
-          <button class="dash" style="white-space:nowrap">
+          <button class="dash" style="white-space:nowrap;align:right">
             GO TO DASH-BOARD
           </button>
         </div>
       </div>
     </transition>
 
-    <!-- Mobile-view -->
-    <!-- {{ mobile }}
+     <!-- Mobile-view 
+     {{ mobile }}
     {{ mobileNav }}
-    {{ windowWidth }} -->
+    {{ windowWidth }}  -->
   </div>
 </template>
 
@@ -94,7 +94,7 @@ export default {
     },
     checkScreen() {
       this.windowWidth = window.innerWidth;
-      if (this.windowWidth <= 750) {
+      if (this.windowWidth <= 768) {
         this.mobile = true;
         return;
       }
@@ -109,19 +109,24 @@ export default {
 <style lang="scss" scoped>
 i {
   color: black;
+   align-self: start;
+   width: 20px;
+
 }
 
 .mobile-view {
     border: 1px solid red;
-   min-width: 1100px;
-  display: flex;
-  flex-direction: column;
+   min-width: 11rem;
+  display: block;
+  text-align: center;
+  flex-direction:inherit;
 
   .navigation {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
+    display: block;
+    flex-direction: inherit;
+    align-items:auto;
+    gap: 0.5rem;
+    text-align: left;
   }
 }
 </style>
