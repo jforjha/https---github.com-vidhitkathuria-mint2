@@ -1,7 +1,7 @@
 <template>
-  <div class="nav-container">
+  <div class="nav-container" id = guidance>
    
-    <h1>This is Features Page</h1> 
+    <h1>This is Guidance Page</h1> 
     
   </div>
 </template>

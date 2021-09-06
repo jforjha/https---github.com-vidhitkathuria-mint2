@@ -20,7 +20,7 @@
 // }
 
 #nav {
-  // padding: 30px;
-  margin-top: 40px;
+  //  padding: 50px;
+  margin-top: 0px;
 }
 </style>

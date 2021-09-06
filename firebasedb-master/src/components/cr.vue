@@ -1,7 +1,94 @@
 <template>
-  <div>
+  <div id=nav1>
+    <div>
+    <v-navigation-drawer 
+      v-model="drawer"
+      app
+      temporary
+      dark
+      src="@/assets/img/bgDrawer.jpg"
+    >
+      <v-list>
+        <v-list-item>
+          <v-list-item-avatar>
+            <img src="@/assets/img/logo.png" alt="Logo" />
+          </v-list-item-avatar>
+          <v-list-item-content>
+            <v-list-item-title class="title">GuruMint</v-list-item-title>
+            <v-list-item-subtitle>NFT's</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+
+      <v-divider />
+
+      <v-list dense>
+        <v-list-item
+         
+        >
+        
+        <p>
+          <span class="mr-2">
+               <router-link :to="{ name: 'Guidance' }" style="text-decoration: none; color: inherit;">Buying Guidance</router-link></span>
+               <br>
+               <br>
+               <span class="mr-2">
+               <router-link :to="{ name: 'Features' }" style="text-decoration: none; color: inherit;">Features</router-link></span>
+               <br>
+               <br>
+                <span class="mr-2"><router-link :to="{ name: 'About' }" style="text-decoration: none; color: inherit;">About</router-link></span>
+                <br>
+                <br>
+                <span class="mr-2"><router-link :to="{ name: 'Contact' }" style="text-decoration: none; color: inherit;">Contact</router-link></span>
+        </p>
+       
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-app-bar
+      app
+
+      :color="color"
+      :flat="flat"
+      dark
+      class="px-15"
+      :class="{ expand: flat }"
+    >
+      <v-toolbar-title>
+        <v-img src="@/assets/img/logo.png" max-width="50px" />
+      </v-toolbar-title>
+      <v-spacer />
+      <v-app-bar-nav-icon
+        @click.stop="drawer = !drawer"
+        class="mr-4"
+        v-if="isXs"
+      />
+      
+      <div v-else>
+        <v-btn text @click="$vuetify.goTo('#guidance')">
+          <span class="mr-2">
+               <router-link :to="{ name: 'Guidance' }" style="text-decoration: none; color: inherit;">Buying Guidance</router-link></span>
+        </v-btn>
+        <v-btn text @click="$vuetify.goTo('#features')">
+          <span class="mr-2"> <router-link :to="{ name: 'Features' }" style="text-decoration: none; color: inherit;">Features</router-link></span>
+        </v-btn>
+        <v-btn text @click="$vuetify.goTo('#download')">
+          <span class="mr-2">
+              <router-link :to="{ name: 'About' }" style="text-decoration: none; color: inherit;">About</router-link>
+              </span>
+        </v-btn>
+        <!-- <v-btn text @click="$vuetify.goTo('#pricing')">
+          <span class="mr-2">OUR MARKETPLACE</span>
+        </v-btn> -->
+        <v-btn rounded outlined text @click="$vuetify.goTo('#contact')">
+          <span class="mr-2"><router-link :to="{ name: 'Contact' }" style="text-decoration: none; color: inherit;">Contact</router-link></span>
+        </v-btn>
+      </div>
+    </v-app-bar>
+  </div>
     <section>
-      <Nav/>
+    
       <div class="big">
         <div class="first-page">
          
@@ -199,9 +286,6 @@
 <script>
 // eslint-disable-next-line
 /* eslint-disable */
-
-import getWeb3 from '../contracts/web3';
-import contractAbi from '../contracts/abi';
 import { Facebook } from 'vue-socialmedia-share';
 import { WhatsApp } from 'vue-socialmedia-share';
 import { Telegram } from 'vue-socialmedia-share';
@@ -211,10 +295,11 @@ import Series from "./Series.vue";
 import axios from "axios";
 import Vue from 'vue'
 import VModal from 'vue-js-modal/dist/ssr.nocss'
-import Nav from "./Nav.vue"
+import Navigation from "./Navigation.vue"
+import guidance from "../pages/Guidance.vue"
 
 import 'vue-js-modal/dist/styles.css'
-const contractAddress = '0x003ff0da735f8690aedbc474e55cc7c370765cc7';
+
 Vue.use(VModal, { componentName: 'Foo' })
 var currentRoute = window.location;
 let accounts = [];
@@ -224,6 +309,15 @@ export default {
   data() {
     
     return {
+       drawer: null,
+    isXs: false,
+    items: [
+      ["mdi-home-outline", "Guidance",""],
+      ["mdi-information-outline", "Features", "#features"],
+      ["mdi-download-box-outline", "About", "#download"],
+      // ["mdi-currency-usd", "Preços", "#pricing"],
+      ["mdi-email-outline", "Contact us", "#contact"],
+    ],
      web3: "",
       modal:false,
       account: "",
@@ -243,6 +337,10 @@ user:{
 submitted: false,
     };
   },
+    props: {
+    color: String,
+    flat: Boolean,
+  },
   
    
   methods: {
@@ -261,6 +359,9 @@ submitted: false,
     },
      opendialog () {
         this.$modal.show('example')
+    },
+      onResize() {
+      this.isXs = window.innerWidth < 850;
     },
     sendEthButton ()  {
       
@@ -362,7 +463,20 @@ makepayment: function() {
     ToDos: db.collection("ToDos"),
   },
    
-  components: { Series,Facebook,WhatsApp,Telegram,Linkedin,Nav },
+  components: { Series,Facebook,WhatsApp,Telegram,Linkedin,Navigation,guidance },
+  watch: {
+    isXs(value) {
+      if (!value) {
+        if (this.drawer) {
+          this.drawer = false;
+        }
+      }
+    },
+  },
+  mounted() {
+    this.onResize();
+    window.addEventListener("resize", this.onResize, { passive: true });
+  },
   
 
 };
@@ -655,7 +769,14 @@ h2.second-container {
 	text-decoration: none;
 	color: #ffffff;
 	background: #2629ec;
+
 }
+#nav1{
+   padding:10px;
+   margin-top:50px;
+  
+}
+
 
 
 

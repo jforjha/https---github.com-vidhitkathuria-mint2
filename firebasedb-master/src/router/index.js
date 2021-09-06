@@ -7,6 +7,8 @@ import Schedule from "../pages/Schedule.vue";
 import Landing from "../components/Landing.vue";
 import Features from "../pages/Features.vue";
 import About from "../pages/About.vue";
+import Contact from "../pages/Contact.vue";
+import Guidance from "../pages/Guidance.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -40,6 +42,16 @@ const routes = [
     path: "/about",
     name: "About",
     component: About,
+  },
+  {
+    path: "/contact",
+    name: "Contact",
+    component: Contact,
+  },
+  {
+    path: "/guidance",
+    name: "Guidance",
+    component: Guidance,
   },
 ];
 

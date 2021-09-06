@@ -1,7 +1,7 @@
 <template>
   <div class="nav-container">
    
-    <h1>This is Features Page</h1> 
+    <h1>This is Contact Page</h1> 
     
   </div>
 </template>
