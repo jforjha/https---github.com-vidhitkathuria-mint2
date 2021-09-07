@@ -11,10 +11,10 @@
       <label>Phone Number</label>
       <input type="text" id="number" v-model="user.number" />
       <br> -->
-      
+    
     <div id="calendly" class="calendly-inline-widget" data-url="https://calendly.com/gurumint/dawn-dickson" 
     style="min-width:100vw;height:100vh;position:relative; 
-    margin-top:-100px;
+    margin-top:-50px;
     "></div>
 
              <!-- <input
@@ -51,13 +51,20 @@
 
       <input
         type="button"
-              style="background-color: lightgreen; height: 50px; width: 20vw;left:40vw;position:relative; "
+              style=" height: 50px;
+              width:40%;
+               left:30vw;position:absolute;
+               border:solid blue
+              overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; "
         id="rzpbutton"
         value="Pay To Reserve Your Slot"
         v-on:click= makepayment();
           />
 
 </div>
+
 </template>
 
 <script>
@@ -230,5 +237,14 @@ input[type="checkbox"] {
   font-size: 0.8em;
   font-weight: bold;
 }
+#rzpbutton{
+	border-radius: 3px;
+	font-weight: 500;
+	text-decoration: none;
+	color: #ffffff;
+	background: #2629ec;
+  bottom: 20px;
+}
+
 
 </style>
