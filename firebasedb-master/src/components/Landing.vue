@@ -2,6 +2,7 @@
   <v-app>
     <navigation :color="color" :flat="flat" />
     <v-main class="pt-0">
+    
       <home />
       <about />
       <download />
@@ -37,6 +38,7 @@
 </style>
 
 <script>
+
 import navigation from "./Navigation.vue";
 import foote from "./Footer.vue";
 import home from "./HomeSection.vue";

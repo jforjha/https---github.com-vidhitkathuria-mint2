@@ -7,9 +7,9 @@
             <v-col cols="12" md="6" xl="8">
               <h1 class="display-2 font-weight-bold mb-4">GuruMint</h1>
               <h1 class="font-weight-light">
- -> Immortalise Your Acheivements <br />
-                -> Connect With Your Fans<br />
-               -> Digitalize, Earn, and grow 
+ -> {{$t('Immortalise')}} <br />
+                -> {{$t('Connect')}}<br />
+               -> {{$t('Digitalize')}}
               </h1>
               <v-btn
                 rounded
@@ -19,7 +19,7 @@
                 @click="$vuetify.goTo('#features')"
                 class="mt-5"
               >
-                PRO ADVANTAGE
+              {{$t('Pro')}}
                 <v-icon class="ml-2">mdi-arrow-down</v-icon>
               </v-btn>
               <div class="video d-flex align-center py-4">
@@ -62,7 +62,7 @@
                     />
                   </svg>
                 </a>
-                <p class="subheading ml-2 mb-0">Watch Video for More Details</p>
+                <p class="subheading ml-2 mb-0">{{$t('Watch')}}</p>
               </div>
             </v-col>
             <v-col cols="12" md="6" xl="4" class="hidden-sm-and-down"> </v-col>
@@ -131,6 +131,9 @@
 
 <script>
 export default {
+   props: {
+            msg: String
+        },
   data() {
     return {
       dialog: false,
