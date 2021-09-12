@@ -106,25 +106,25 @@
                </dropdown-menu>
         <v-btn  text @click="$vuetify.goTo('#hero')">
           <span class="mr-2">
-             {{$t('HOME')}}</span>
+            HOME</span>
         </v-btn>
         
          
           
       
         <v-btn text @click="$vuetify.goTo('#features')">
-          <span class="mr-2">{{$t('FEATURES')}}</span>
+          <span class="mr-2">FEATURES</span>
         </v-btn>
         <v-btn text @click="$vuetify.goTo('#download')">
           <span class="mr-2">
-              {{$t('ABOUT')}}
+           ABOUT
               </span>
         </v-btn>
         <v-btn text @click="$vuetify.goTo('#pricing')">
-          <span class="mr-2">{{$t('MARKETPLACE')}}</span>
+          <span class="mr-2">MARKETPLACE</span>
         </v-btn>
         <v-btn rounded outlined text @click="$vuetify.goTo('#contact')">
-          <span class="mr-2">{{$t('CONTACT')}}</span>
+          <span class="mr-2">CONTACT US</span>
         </v-btn>
       </div>
     </v-app-bar>
@@ -145,7 +145,6 @@
 <script>
  /* eslint-disable */
 import { Translator } from 'vue-google-translate';
- import i18n from '@/plugins/i18n';
   import Vue from 'vue'
     import DropdownMenu from 'v-dropdown-menu'
     import 'v-dropdown-menu/dist/v-dropdown-menu.css'
@@ -189,10 +188,7 @@ export default {
 
     ],
   
-     languages: [
-                    { flag: 'In', language: 'en', title: 'English' },
-                    { flag: 'Id', language: 'es', title: 'Indonesian' }
-                ],
+    
    
 
   }),
