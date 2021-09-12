@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div>  
     <v-navigation-drawer
       v-model="drawer"
       app
@@ -43,9 +43,21 @@
      <dropdown-menu style="padding-left:30px;" >
            <button slot="trigger">Choose Language</button>
      
-       <ul slot="body" style="height:50px;width:20px">
-  <v-btn v-for="entry in languages" :key="entry.title" @click="changeLocale(entry.language)">
-                <flag :iso="entry.flag" v-bind:squared=false /> {{entry.title}}
+       <ul slot="body" style="height:50px;width:20px;background:white">
+  <v-btn v-for="country in countries" class="py-2" :key="country.id" style="color:white">
+               <span @click="doTranslation(country.code)" :title="country.title">
+          <span class="language-item">
+            <img
+              :alt="country.alt"
+              :src="
+                `https://cdn.jsdelivr.net/gh/lewis-kori/vue-google-translate/src/assets/images/flags/__${country.title}.png`
+              "
+              class="flag"
+            />
+
+            <span class="language__text">{{ country.title }}</span>
+          </span>
+        </span>
             </v-btn>
               </ul>
                </dropdown-menu>
@@ -71,12 +83,24 @@
       />
       
       <div v-else>
-         <dropdown-menu >
-           <button slot="trigger">Choose Language</button>
+         <dropdown-menu style="color:white" >
+           <button slot="trigger" style="color:white" >Choose Language</button>
      
-       <ul slot="body" style="height:50px;width:20px">
-  <v-btn v-for="entry in languages" :key="entry.title" @click="changeLocale(entry.language)">
-                <flag :iso="entry.flag" v-bind:squared=false /> {{entry.title}}
+       <ul slot="body" style="height:50px;width:20px;color:white">
+ <v-btn v-for="country in countries" class="py-2" :key="country.id" style="color:white">
+               <span @click="doTranslation(country.code)" :title="country.title" style="color:white">
+          <span class="language-item" style="color:white">
+            <img
+              :alt="country.alt"
+              :src="
+                `https://cdn.jsdelivr.net/gh/lewis-kori/vue-google-translate/src/assets/images/flags/__${country.title}.png`
+              "
+              class="flag"
+            />
+
+            <span class="language__text" style="color:white">{{ country.title }}</span>
+          </span>
+        </span>
             </v-btn>
               </ul>
                </dropdown-menu>
@@ -119,12 +143,40 @@
 </style>
 
 <script>
+ /* eslint-disable */
+import { Translator } from 'vue-google-translate';
  import i18n from '@/plugins/i18n';
   import Vue from 'vue'
     import DropdownMenu from 'v-dropdown-menu'
     import 'v-dropdown-menu/dist/v-dropdown-menu.css'
   Vue.use(DropdownMenu);
+
+
+  
 export default {
+    name: 'Translator',
+    props: {
+        color: String,
+    flat: Boolean,
+    
+    countries: {
+      type: Array,
+      default() {
+        return [
+            {
+            code: 'en|id',
+            title: 'Indonesian',
+          },
+            {
+            code: 'en|en',
+            title: 'English',
+          },
+
+        ];
+      },
+    },
+  },
+
   data: () => ({
     drawer: null,
     isXs: false,
@@ -136,23 +188,38 @@ export default {
       ["mdi-email-outline", "Contact Us", "#contact"],
 
     ],
+  
      languages: [
                     { flag: 'In', language: 'en', title: 'English' },
                     { flag: 'Id', language: 'es', title: 'Indonesian' }
-                ]
+                ],
+   
+
   }),
-  props: {
-    color: String,
-    flat: Boolean,
+   computed: {
+    hasClickListener() {
+      return Object.keys(this.$listeners).includes('on-country-click');
+    },
   },
+
+  
   methods: {
     onResize() {
       this.isXs = window.innerWidth < 850;
     },
       changeLocale(locale) {
                 i18n.locale = locale;
-            }
+            },
+                doTranslation(code) {
+      window.doGTranslate(code);
+      if (this.hasClickListener) {
+        this.$emit('on-country-click');
+      }
+      return false;
+    },
+ 
   },
+
 
   watch: {
     isXs(value) {
@@ -167,6 +234,61 @@ export default {
     this.onResize();
     window.addEventListener("resize", this.onResize, { passive: true });
   },
+   components: {
+    Translator
+  }
+ 
+
 };
+
 </script>
 
+<style scoped>
+a:link {
+  text-decoration: none;
+  font-size: large;
+  cursor: pointer;
+}
+.language-item {
+  display: flex;
+}
+.language__text {
+  color: black;
+  margin-top: 7px;
+  padding-left: 5px;
+  text-decoration: none;
+}
+.language-item:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.flag {
+  height: 40px;
+}
+h3 {
+  cursor: pointer;
+}
+/*//columns*/
+/* Container for flexboxes */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+/* Create four equal columns */
+.column {
+  flex: 20%;
+  padding: 10px;
+}
+/* On screens that are 992px wide or less, go from four columns to two columns */
+@media screen and (max-width: 992px) {
+  .column {
+    flex: 25%;
+  }
+}
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+}
+</style>

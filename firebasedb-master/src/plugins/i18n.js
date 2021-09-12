@@ -14,7 +14,8 @@ const messages = {
         Connect:'Connect With Your Fans',
         Digitalize:'Digitalize, Earn, and grow',
         Pro:'PRO ADVANTAGE',
-        Watch:'Watch Video for More Details'
+        Watch:'Watch Video for More Details',
+        Victory: 'Victory Immortalized'
     },
     'es': {
         HOME: 'Rumah',
@@ -27,7 +28,8 @@ const messages = {
         Digitalize:'Digitalisasi, Hasilkan, dan kembangkan',
         Pro:'keuntungan pro',
         Watch:'Tonton Video untuk Lebih Jelasnya',
-        Language:'Pilih bahasa'
+        Language:'Pilih bahasa',
+        Victory: 'Kemenangan Diabadikan'
     }
 };
 
